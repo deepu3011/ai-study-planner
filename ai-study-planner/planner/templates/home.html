@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Planner</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Planner
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#planner">Planner</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <h1>
+                Plan Your Day Smarter With AI
+            </h1>
+
+            <p>
+                Generate personalized study schedules,
+                improve productivity, and balance your
+                student life using AI.
+            </p>
+
+            <a href="#planner" class="btn">
+            Get Started
+            </a>
+
+        </div>
+
+        <div class="hero-right">
+
+            <div class="glass-card">
+
+                <h2>Today's Focus</h2>
+
+                <ul>
+                    <li>DSA Practice</li>
+                    <li>Web Development</li>
+                    <li>Gym Session</li>
+                    <li>Revision</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- FEATURES SECTION -->
+
+<section class="features" id="features">
+
+    <h2>
+        Powerful AI Features
+    </h2>
+
+    <div class="feature-container" >
+
+        <div class="feature-card">
+            <h3>AI Timetable</h3>
+            <p>
+                Generate smart personalized study schedules instantly.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Goal Tracking</h3>
+            <p>
+                Track daily study goals and maintain consistency.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Balanced Routine</h3>
+            <p>
+                AI balances study, gym, breaks, and productivity.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+<!-- PLANNER SECTION -->
+
+<section class="planner-section" id="planner">
+
+    <h2>Create Your AI Study Plan</h2>
+
+    <form method="POST" class="planner-form">
+
+        {% csrf_token %}
+
+        <input type="text" name="wake_time" placeholder="Wake Up Time">
+
+        <input type="text" name="college_time" placeholder="School/College Timing">
+
+        <input type="text" name="subjects" placeholder="Subjects">
+
+        <input type="text" name="study_hours" placeholder="Study Hours">
+
+        <button type="submit">
+            Generate Timetable
+        </button>
+
+    </form>
+
+</section>
+{% if timetable %}
+
+<section class="output-section">
+
+    <h2>Your AI Study Plan</h2>
+
+    <div class="output-card">
+
+        <pre>{{ timetable|safe }}</pre>
+
+    </div>
+
+</section>
+
+{% endif %}
+<section class="contact-section" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>Email: support@aiplanner.com</p>
+    <p>Phone: +91 9876543210</p>
+    <p>We reply within 24 hours</p>
+
+</section>
+</body>
+</html>
